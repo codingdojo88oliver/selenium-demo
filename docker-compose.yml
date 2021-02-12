@@ -19,7 +19,7 @@ services:
       ports:
         - 3307:3306
 
-    app:
+    web_app:
       depends_on:
         - db
         - selenium_chrome
