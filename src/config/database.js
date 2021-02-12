@@ -11,14 +11,16 @@ var connection      = Mysql.createConnection({
 
 var executeQuery = async function(query) {
     if(isConnected == false){
+        return new Promise(function(resolve, reject){
+            connection.on('error', function(err) {
+                resolve(handleConnection(query, err));
+            });
 
-        connection.on('error', function(err) {
-            return handleConnection(query, err);
+            connection.connect(function(err){
+                resolve(handleConnection(query, err));
+            });
         });
 
-        connection.connect(function(err){
-            return handleConnection(query, err);
-        });
     }else{
         return execute(query);
     }
@@ -47,7 +49,7 @@ var handleConnection = function(query, err, limit = 1) {
             }, 1500);
         } else {
             return new Promise(function(resolve, reject){
-                reject({err: "Can't connect to the database"});
+                reject(err);
             });		            
         }
     } else {
