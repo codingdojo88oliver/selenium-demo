@@ -1,7 +1,7 @@
-const chai                  = require('chai');
-const expect                = chai.expect;
-const chrome = require('selenium-webdriver/chrome');
-const {Builder, By, Capabilities} = require('selenium-webdriver');
+const chai                          = require('chai');
+const expect                        = chai.expect;
+const chrome                        = require('selenium-webdriver/chrome');
+const {Builder, By, Capabilities}   = require('selenium-webdriver');
 
 const caps = new Capabilities();
 caps.setPageLoadStrategy("normal");
