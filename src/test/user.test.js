@@ -18,7 +18,6 @@ describe('Login feature', function(){
                 build();
     
             // Navigate to Url
-            // await driver.get("http://host.docker.internal:3001");
             await driver.get("http://web_app:3000");
             let message = await driver.findElement(By.id("title")).getText();
             console.log("The message is", message);
